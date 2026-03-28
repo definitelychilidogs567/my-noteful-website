@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pokédex</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: #111;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .pokedex-container {
+        background: #1a1a1a;
+        border: 3px solid #ff0000;
+        border-radius: 16px;
+        padding: 30px;
+        width: 100%;
+        max-width: 420px;
+        box-shadow: 0 0 25px rgba(255, 0, 0, 0.4);
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2.4rem;
+        margin-bottom: 20px;
+        color: #ff4d4d;
+        text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+    }
+
+    /* Blinking placeholder animation */
+    @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    input::placeholder {
+        animation: blink 1.2s infinite;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 2px solid #ff4d4d;
+        background: #222;
+        color: white;
+        font-size: 1rem;
+        outline: none;
+        margin-bottom: 15px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #ff0000;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: 0.25s;
+        box-shadow: 0 0 0 rgba(255, 0, 0, 0);
+    }
+
+    /* Glow hover effect */
+    button:hover {
+        background: #cc0000;
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+    }
+
+    #results {
+        margin-top: 25px;
+        padding: 20px;
+        background: #222;
+        border-radius: 12px;
+        border: 2px solid #444;
+        min-height: 120px;
+    }
+</style>
+</head>
+
+<body>
+<div class="pokedex-container">
+    <h1>Pokédex 🔴⚪</h1>
+
+    <input id="pokemonInput" type="text" placeholder="Enter Pokémon name...">
+    <button onclick="searchPokemon()">Search</button>
+
+    <div id="results"></div>
+</div>
+
+<script>
+    function searchPokemon() {
+        const name = document.getElementById("pokemonInput").value.trim();
+        const results = document.getElementById("results");
+
+        if (!name) {
+            results.innerHTML = "<p>Please enter a Pokémon name.</p>";
+            return;
+        }
+
+        results.innerHTML = `<p>Searching for <strong>${name}</strong>...</p>`;
+    }
+</script>
+</body>
+</html>
